@@ -32,3 +32,18 @@
 	font-size: 16px;
 	text-align: center;
 }
+#top_ad{
+	width: 962px;
+	height: 0px;   /*386*/
+	margin: 0 auto;
+	display: none;
+}
+#close{
+	width: 15px;
+	height: 15px;
+	background-color: #f00;
+	display: none;
+	position:absolute;
+	top: 20px;
+	right: 20%;
+}

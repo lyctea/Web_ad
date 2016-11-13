@@ -10,7 +10,7 @@
     		//点击右上角关闭按钮，关闭广告页
     		var cloBtn = document.getElementsByClassName("close_btn")[0];
     		var web_id = document.getElementById("web_id");
-    		cloBtn.onclick = function(){	
+    		cloBtn.onclick = function(){
     			web_id.style.display = "none";
     		};
     		//鼠标滑过按钮，弹出广告页
@@ -18,17 +18,67 @@
     		bottom_btn.onmouseover = function(){
     			web_id.style.display = "block";
     		};
+
+    		//顶部广告展示
+    		var top_ad = document.getElementById("top_ad");
+    		var top_ad_img = document.getElementsByClassName("top_ad_img")[0];
+            var sma_ad = document.getElementsByClassName("sma_ad")[0];
+            var close = document.getElementById("close");
+
+
+            var sma_ad_h = sma_ad.height;
+            console.log(sma_ad_h);
+    		var maxH = top_ad_img.height;
+    		var h = 0;
+            var speed = 15;
+            function subH(){
+                if(h >= sma_ad_h){
+                    h -= speed;
+                    top_ad.style.height = h + "px";
+                    setTimeout(subH,50);
+                }else{
+                    top_ad_img.style.display = "none";
+                    sma_ad.style.display = "block";
+                    close.style.display = "block";
+                }
+            };
+
+            function addH(){
+                if (h < maxH) {
+                    h += speed;
+                    top_ad.style.height = h + "px";
+                    top_ad.style.display = "block";
+                    setTimeout(addH,50);
+                }else{
+                    setTimeout(subH,1000);
+                }
+
+            };
+            setTimeout(addH,50);
+            close.onclick = function(){
+                top_ad.remove();
+
+            };
+
     	};
     </script>
 </head>
 <body>
+	<!-- 顶部广告 -->
+	<div id="top_ad">
+        <img class="top_ad_img" src="images/ad.png" width="960" height="386"/>
+        <img class="sma_ad" src="images/cur.png" width="960" height="68" alt="" />
+        <span id="close"></span>
+    </div>
+
     <div id="main_img"><img src="images/tb_bg.jpg"/></div>
 	<div id="web_id">
 		<div class="id_content">
-			<a href="javascript:void(0);"><img src="images/snow.gif"></a>	
+			<a href="javascript:void(0);"><img src="images/snow.gif" /></a>
 			<div class="close_btn"></div>
 		</div>
 	</div>
 	<div id="bottom_btn">猜猜我有啥</div>
+
 </body>
 </html>
